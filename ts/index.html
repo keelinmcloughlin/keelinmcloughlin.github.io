@@ -409,11 +409,13 @@ document.querySelectorAll(".cl").forEach(card=>card.addEventListener("click",()=
   refresh();
   if(clusterFocus!==null){
     const card=document.querySelector("#map .card");
-    const r=card.getBoundingClientRect();
-    if(r.height + 80 <= window.innerHeight){
-      window.scrollTo({top: r.top + window.scrollY - (window.innerHeight - r.height)/2, behavior:"smooth"});
+    const xLabels=card.querySelector(".axis-note");
+    const top=card.getBoundingClientRect().top, bottom=xLabels.getBoundingClientRect().bottom;
+    const h=bottom-top;
+    if(h + 80 <= window.innerHeight){
+      window.scrollTo({top: top + window.scrollY - (window.innerHeight - h)/2, behavior:"smooth"});
     } else {
-      window.scrollTo({top: r.bottom + window.scrollY - window.innerHeight + 24, behavior:"smooth"});
+      window.scrollTo({top: bottom + window.scrollY - window.innerHeight + 24, behavior:"smooth"});
     }
   }
 }));
