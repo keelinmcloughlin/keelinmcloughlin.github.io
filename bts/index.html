@@ -453,7 +453,9 @@ function predict(){
     pred>=63?"Solid title-track energy":
     pred>=54?"Respectable album cut":
     "A deep cut for the true ARMY";
-  document.getElementById("nnList").innerHTML=k5.map(x=>
+  const seen=new Set(), show=[];
+  for(const x of scored){ const key=x.t.n.toLowerCase().split(" - ")[0].replace(/\s*\(.*\)$/,"").trim(); if(seen.has(key)) continue; seen.add(key); show.push(x); if(show.length===5) break; }
+  document.getElementById("nnList").innerHTML=show.map(x=>
     `<div class="nn"><span class="nm">${x.t.n}</span><span class="pp">${x.t.p}</span></div>`).join("");
 }
 let curScore=0;
@@ -468,5 +470,6 @@ function animateScore(target){
 }
 predict();
 </script>
+<script data-goatcounter="https://keelin1510.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
