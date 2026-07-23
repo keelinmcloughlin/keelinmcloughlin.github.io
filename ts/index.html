@@ -407,7 +407,15 @@ document.querySelectorAll(".cl").forEach(card=>card.addEventListener("click",()=
     mode="cluster";
   }
   refresh();
-  if(clusterFocus!==null){ const el=document.getElementById("eraChips"); window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 56, behavior:"smooth"}); }
+  if(clusterFocus!==null){
+    const card=document.querySelector("#map .card");
+    const r=card.getBoundingClientRect();
+    if(r.height + 80 <= window.innerHeight){
+      window.scrollTo({top: r.top + window.scrollY - (window.innerHeight - r.height)/2, behavior:"smooth"});
+    } else {
+      window.scrollTo({top: r.bottom + window.scrollY - window.innerHeight + 24, behavior:"smooth"});
+    }
+  }
 }));
 
 /* ---------- evolution chart (by release year, as in the notebook) ---------- */
