@@ -348,6 +348,7 @@ const map = new Chart(document.getElementById("mapChart"),{
       legend:{display:false},
       tooltip:{backgroundColor:"#f5f4f0",titleColor:"#2e2c29",bodyColor:"#6f6b64",
         borderColor:"#857b6c",borderWidth:1,padding:12,displayColors:false,
+        filter:(item,idx,items)=>items.findIndex(o=>o.raw.t.t===item.raw.t.t)===idx,
         titleFont:{family:"'Cormorant Garamond',serif",size:16,style:"italic"},
         callbacks:{
           title:i=>i[0].raw.t.t,
