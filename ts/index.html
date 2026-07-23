@@ -324,7 +324,7 @@ ERAS.forEach(e=>{
   chipWrap.appendChild(c);
 });
 document.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>{
-  if(clusterFocus!==null){
+  if(clusterFocus!==null && b.classList.contains("on")){
     clusterFocus=null;
     document.querySelectorAll(".cl").forEach(x=>x.classList.remove("active"));
   }
